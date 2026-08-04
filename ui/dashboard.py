@@ -10,6 +10,7 @@
 # - Speed
 # - MAF
 # Plus some stylistic choices from me. 
+# ui/dashboard.py
 
 from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
@@ -59,8 +60,9 @@ class DashboardScreen(Screen):
         # --- TOP BAR (MPG + MAF) ---
         top_bar = BoxLayout(size_hint_y=0.15, spacing=10)
 
-        self.mpg_display = MPGDisplay()
-        self.maf_display = MAFDisplay()
+        # Apply retro font to MPG + MAF displays
+        self.mpg_display = MPGDisplay(font_name="fonts/segment.ttf")
+        self.maf_display = MAFDisplay(font_name="fonts/segment.ttf")
 
         top_bar.add_widget(self.mpg_display)
         top_bar.add_widget(self.maf_display)
@@ -74,7 +76,14 @@ class DashboardScreen(Screen):
         rpm_section = BoxLayout(orientation="vertical", size_hint_x=0.3, spacing=10)
 
         self.rpm_bar = RPMBar(size_hint_y=0.8)
-        self.rpm_label = Label(text="RPM: --", font_size=32, color=(1, 1, 1, 1))
+
+        # Retro RPM label
+        self.rpm_label = Label(
+            text="RPM: --",
+            font_name="fonts/segment.ttf",
+            font_size="32sp",
+            color=(1, 1, 1, 1)
+        )
 
         rpm_section.add_widget(self.rpm_bar)
         rpm_section.add_widget(self.rpm_label)
@@ -82,8 +91,9 @@ class DashboardScreen(Screen):
         # Temperature section
         temp_section = BoxLayout(orientation="vertical", size_hint_x=0.7, spacing=10)
 
-        self.coolant_box = TempBox(label_text="Coolant")
-        self.iat_box = TempBox(label_text="Intake Air")
+        # Apply retro font to TempBox labels
+        self.coolant_box = TempBox(label_text="Coolant", font_name="fonts/segment.ttf")
+        self.iat_box = TempBox(label_text="Intake Air", font_name="fonts/segment.ttf")
 
         temp_section.add_widget(self.coolant_box)
         temp_section.add_widget(self.iat_box)
@@ -96,7 +106,8 @@ class DashboardScreen(Screen):
         # --- BOTTOM BAR (Speed) ---
         bottom_bar = BoxLayout(size_hint_y=0.30)
 
-        self.speed_display = SpeedDisplay()
+        # Retro font for speed display
+        self.speed_display = SpeedDisplay(font_name="fonts/segment.ttf")
         bottom_bar.add_widget(self.speed_display)
 
         root.add_widget(bottom_bar)
