@@ -29,6 +29,13 @@ from modules.smoothing import Smoother
 from ui.dashboard import DashboardScreen
 from ui.trip_screen import TripScreen
 
+from kivy.core.text import LabelBase
+import os
+
+font_path = os.path.join(os.path.dirname(__file__), "ui", "fonts", "segment.ttf")
+LabelBase.register(name="Segment", fn_regular=font_path)
+
+
 
 class VICOSScreenManager(ScreenManager):
     pass
