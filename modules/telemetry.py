@@ -35,7 +35,7 @@ class Telemetry:
         Initialize OBD-II connection and database.
         """
         print("Initializing OBD-II connection...")
-        self.connection = obd.OBD("/dev/ttyUSB0", baudrate=38400, fast=False)
+        self.connection = obd.OBD(baudrate=115200)
 
 
         print("Initializing database...")
