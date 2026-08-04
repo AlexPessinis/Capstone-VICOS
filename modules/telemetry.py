@@ -35,7 +35,7 @@ class Telemetry:
         Initialize OBD-II connection and database.
         """
         print("Initializing OBD-II connection...")
-        self.connection = obd.OBD(baudrate=115200)
+        self.connection = obd.OBD(baudrate=38400)
 
 
         print("Initializing database...")
