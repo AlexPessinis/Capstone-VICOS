@@ -30,7 +30,10 @@ LITERS_PER_GALLON = 3.78541
 class Telemetry:
     def __init__(self):
         print("Initializing OBD-II connection...")
+
         self.connection = obd.OBD("/dev/ttyUSB0", baudrate=115200, fast=False)
+        print("OBD Status:", self.connection.status())
+
 
 
         print("Initializing database...")
