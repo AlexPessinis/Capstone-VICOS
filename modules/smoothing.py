@@ -14,26 +14,22 @@
 from collections import deque
 
 
+from collections import deque
+
+
 class Smoother:
     def __init__(self):
-        # Store last smoothed values
         self.last_values = {}
-
-        # Per-signal smoothing factors
         self.alpha = {
-            "rpm": 0.25,          # fast response due to rapid changes
-            "coolant": 0.05,      # bery slow because slow changes
-            "speed": 0.20,        # moderate
-            "iat": 0.10,          # moderate
-            "maf": 0.15,          # moderate
-            "fuel_level": 0.05,   # very slow
-            "mpg": 0.08,          # also very slow
+            "rpm": 0.25,
+            "coolant": 0.05,
+            "speed": 0.20,
+            "iat": 0.10,
+            "maf": 0.15,
+            "fuel_level": 0.05,
+            "mpg": 0.08,
         }
-
-        # Rolling buffers (completely optional)
-        self.buffers = {
-            key: deque(maxlen=10) for key in self.alpha.keys()
-        }
+        self.buffers = {key: deque(maxlen=10) for key in self.alpha.keys()}
 
     def exponential(self, key, new_value):
         """
@@ -46,22 +42,22 @@ class Smoother:
 
         a = self.alpha.get(key, 0.15)
 
-        # If no previous value, the system should initialize itself
         if key not in self.last_values:
             self.last_values[key] = new_value
             return new_value
 
         last = self.last_values[key]
         smoothed = (a * new_value) + ((1 - a) * last)
+        self.last_values[key] = smoothed
+        return smoothed
 
     def smooth(self, data, method="ema"):
         smoothed = {}
-
         for key, value in data.items():
             if method == "ema":
                 smoothed[key] = self.exponential(key, value)
             else:
                 smoothed[key] = value
-
         return smoothed
+
 
