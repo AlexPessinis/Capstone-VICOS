@@ -54,3 +54,14 @@ class Smoother:
         last = self.last_values[key]
         smoothed = (a * new_value) + ((1 - a) * last)
 
+    def smooth(self, data, method="ema"):
+        smoothed = {}
+
+        for key, value in data.items():
+            if method == "ema":
+                smoothed[key] = self.exponential(key, value)
+            else:
+                smoothed[key] = value
+
+        return smoothed
+
