@@ -31,28 +31,10 @@ class Telemetry:
     def __init__(self):
         print("Initializing OBD-II connection...")
 
-        # Force stable settings for clone adapters
-        self.connection = obd.OBD(
-            port="/dev/ttyUSB0",
-            baudrate=115200,
-            fast=False,
-            timeout=1,
-            protocol=obd.protocols.ISO_15765_4_CAN
-        )
-
+        self.connection = obd.OBD("/dev/ttyUSB0", baudrate=115200, fast=False)
         print("OBD Status:", self.connection.status())
 
-        # Manual initialization sequence (clone adapters need this)
-        self.connection.send("ATZ")
-        self.connection.send("ATE0")
-        self.connection.send("ATH1")
-        self.connection.send("ATS0")
-        self.connection.send("ATSP6")  # Force CAN 11-bit
-
-        print("RPM test:", self.connection.query(obd.commands.RPM))
-
-
-
+        print("OBD Testing complete.")
 
         print("Initializing database...")
         init_db()
