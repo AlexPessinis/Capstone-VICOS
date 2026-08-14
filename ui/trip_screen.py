@@ -85,6 +85,9 @@ class TripScreen(Screen):
             background_color=(0.8, 0.1, 0.1, 1)  # red
         )
         self.reset_button.bind(on_press=self.reset_trip)
+        self.reset_button.size_hint = (1, None)
+        self.reset_button.height = 120
+
 
         bottom_section.add_widget(self.reset_button)
         root.add_widget(bottom_section)
