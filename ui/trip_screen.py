@@ -87,6 +87,8 @@ class TripScreen(Screen):
         self.reset_button.bind(on_press=self.reset_trip)
         self.reset_button.size_hint = (1, None)
         self.reset_button.height = 120
+        print("Reset button added:", self.reset_button)
+
 
 
         bottom_section.add_widget(self.reset_button)
