@@ -76,11 +76,15 @@ class TripScreen(Screen):
         # --- BOTTOM SECTION (Reset Button) ---
         bottom_section = BoxLayout(size_hint_y=0.40)
 
-        self.reset_button = ResetButton()
+        # Large red reset button
+        self.reset_button = ResetButton(
+            text="RESET TRIP",
+            font_size=40,
+            background_color=(0.8, 0.1, 0.1, 1)  # red
+        )
         self.reset_button.bind(on_press=self.reset_trip)
 
         bottom_section.add_widget(self.reset_button)
-
         root.add_widget(bottom_section)
 
         self.add_widget(root)

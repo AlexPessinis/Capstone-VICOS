@@ -8,7 +8,7 @@
 # - Per-signal smoothing profiles
 # - Safe handling of any possible None values
 #
-# Designed for 20 Hz telemetry sampling. Changing the telemetry sampling
+# Designed for 5 Hz telemetry sampling. Changing the telemetry sampling
 # SHOULD lead to different required smoothing values.
 
 from collections import deque
@@ -23,11 +23,7 @@ class Smoother:
         self.alpha = {
             "rpm": 0.25,
             "coolant": 0.05,
-            "speed": 0.20,
             "iat": 0.10,
-            "maf": 0.15,
-            "fuel_level": 0.05,
-            "mpg": 0.08,
         }
         self.buffers = {key: deque(maxlen=10) for key in self.alpha.keys()}
 
