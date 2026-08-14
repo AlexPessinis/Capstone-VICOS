@@ -11,3 +11,5 @@ class ResetButton(Button):
         self.font_size = kwargs.get("font_size", 40)
         self.color = (1, 1, 1, 1)
         self.bold = True
+        self.reset_button.size_hint = (1, None)
+        self.reset_button.height = 120

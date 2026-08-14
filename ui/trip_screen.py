@@ -75,8 +75,6 @@ class TripScreen(Screen):
 
         # --- BOTTOM SECTION (Reset Button) ---
         bottom_section = BoxLayout(size_hint_y=0.25, padding=20)
-        self.reset_button.size_hint = (1, None)
-        self.reset_button.height = 120
 
 
 
