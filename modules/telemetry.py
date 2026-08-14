@@ -19,7 +19,7 @@ from modules.smoothing import Smoother
 from modules.persistence import load_trip, save_trip
 
 
-TELEMETRY_INTERVAL = 0.05  # 20 Hz
+TELEMETRY_INTERVAL = 0.2  # 5 Hz
 
 STOICH_RATIO = 14.7
 FUEL_DENSITY_G_PER_ML = 0.745
