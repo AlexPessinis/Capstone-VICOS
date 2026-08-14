@@ -6,8 +6,16 @@ class ResetButton(Button):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+        # Make background_color actually apply
+        self.background_normal = ''
+        self.background_down = ''
+
+        # Size
         self.size_hint_y = None
         self.height = 120
+
+        # Text styling
         self.font_size = kwargs.get("font_size", 40)
         self.color = (1, 1, 1, 1)
         self.bold = True
